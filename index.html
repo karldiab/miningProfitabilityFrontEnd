@@ -9,16 +9,16 @@
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="js/footable.min.js"></script>
         <link rel='stylesheet' href='css/footable.bootstrap.min.css'>
-        <script type="text/javascript">
+        <!--<script type="text/javascript">
             $(function() {
             $('table').footable();
             });
-        </script>
+        </script>-->
         <script src="app.js"></script>
     </head>
     <body ng-controller="IndexController">
         <div class="container">
-            <div class ="jumbotron">
+            <!--<div class ="jumbotron">
                 <h1>Profitability: </h1>
                 Coin: {{profitability.ETH.coinSymbol}}</br>
                 Price: {{profitability.ETH.priceUSD | currency}} USD</br>
@@ -28,7 +28,7 @@
                 Price: {{profitability.ETC.priceUSD | currency}} USD</br>
                 Difficulty: {{profitability.ETC.difficulty |number:3}} Trillion</br>
                 Profitability: {{profitability.ETC.dollarsPerDay |number:4}}$/100MH/day</br>
-            </div>
+            </div>-->
             <table class="table" data-sorting="true">
                 <thead>
                     <tr>
@@ -45,17 +45,17 @@
                         <td>1</td>
                         <td><img src="images/ETH.png" alt="ETH"></td>
                         <td>Ethereum(ETH)</td>
-                        <td>{{profitability.ETH.priceUSD | currency}} USD</td>
-                        <td>{{profitability.ETH.dollarsPerDay |number:4}} $/100MH/day</td>
-                        <td>{{profitability.ETH.difficulty |number:3}} Trillion</td>
+                        <td>${{profitability.ETH.priceUSD |number:4}} USD</td>
+                        <td>{{profitability.ETH.dollarsPerDay |number:4}}</td>
+                        <td>{{profitability.ETH.difficulty |number:5}} Trillion</td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td><img src="images/ETC.png" alt="ETC"></td>
                         <td>Ethereum Classic(ETC)</td>
-                        <td>Wallpaperer Helper</td>
-                        <td>October 15th 2010</td>
-                        <td>March 30th 1982</td>
+                        <td>${{profitability.ETC.priceUSD |number:4}} USD</td>
+                        <td>{{profitability.ETC.dollarsPerDay |number:4}}</td>
+                        <td>{{profitability.ETC.difficulty |number:5}} Trillion</td>
                     </tr>
                 </tbody>
             </table>
