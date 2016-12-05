@@ -7,7 +7,8 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.factory('socket', ['$rootScope', function($rootScope) {
-  var socket = io.connect("http://144.217.86.48:1235");
+  //var socket = io.connect("http://144.217.86.48:1235");
+  var socket = io.connect("http://localhost:1235");
 
   return {
     on: function(eventName, callback){

@@ -4,8 +4,17 @@
         <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular-route.js"></script>
-        <script src="app.js"></script>
+        
         <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="js/footable.min.js"></script>
+        <link rel='stylesheet' href='css/footable.bootstrap.min.css'>
+        <script type="text/javascript">
+            $(function() {
+            $('table').footable();
+            });
+        </script>
+        <script src="app.js"></script>
     </head>
     <body ng-controller="IndexController">
         <div class="container">
@@ -15,7 +24,41 @@
                 Price: {{profitability.ETH.priceUSD | currency}} USD</br>
                 Difficulty: {{profitability.ETH.difficulty |number:3}} Trillion</br>
                 Profitability: {{profitability.ETH.dollarsPerDay |number:4}}$/100MH/day</br>
+                Coin: {{profitability.ETC.coinSymbol}}</br>
+                Price: {{profitability.ETC.priceUSD | currency}} USD</br>
+                Difficulty: {{profitability.ETC.difficulty |number:3}} Trillion</br>
+                Profitability: {{profitability.ETC.dollarsPerDay |number:4}}$/100MH/day</br>
             </div>
+            <table class="table" data-sorting="true">
+                <thead>
+                    <tr>
+                        <th data-type="number">Rank</th>
+                        <th>Logo</th>
+                        <th>Coin</th>
+                        <th>Price</th>
+                        <th>Profitability</th>
+                        <th data-breakpoints="xs">Difficulty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><img src="images/ETH.png" alt="ETH"></td>
+                        <td>Ethereum(ETH)</td>
+                        <td>{{profitability.ETH.priceUSD | currency}} USD</td>
+                        <td>{{profitability.ETH.dollarsPerDay |number:4}} $/100MH/day</td>
+                        <td>{{profitability.ETH.difficulty |number:3}} Trillion</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><img src="images/ETC.png" alt="ETC"></td>
+                        <td>Ethereum Classic(ETC)</td>
+                        <td>Wallpaperer Helper</td>
+                        <td>October 15th 2010</td>
+                        <td>March 30th 1982</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </body>
 
