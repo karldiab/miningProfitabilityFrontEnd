@@ -1,64 +1,78 @@
 <!doctype>
-<html ng-app="sampleApp">
+<html ng-app="profitabilityCalc">
     <head>
         <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular-route.js"></script>
         
         <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script src="js/footable.min.js"></script>
-        <link rel='stylesheet' href='css/footable.bootstrap.min.css'>
-        <!--<script type="text/javascript">
-            $(function() {
-            $('table').footable();
-            });
-        </script>-->
+        <link rel='stylesheet' href='css/style.css'>
         <script src="app.js"></script>
     </head>
-    <body ng-controller="IndexController">
+    <body ng-controller="data">
         <div class="container">
-            <!--<div class ="jumbotron">
-                <h1>Profitability: </h1>
-                Coin: {{profitability.ETH.coinSymbol}}</br>
-                Price: {{profitability.ETH.priceUSD | currency}} USD</br>
-                Difficulty: {{profitability.ETH.difficulty |number:3}} Trillion</br>
-                Profitability: {{profitability.ETH.dollarsPerDay |number:4}}$/100MH/day</br>
-                Coin: {{profitability.ETC.coinSymbol}}</br>
-                Price: {{profitability.ETC.priceUSD | currency}} USD</br>
-                Difficulty: {{profitability.ETC.difficulty |number:3}} Trillion</br>
-                Profitability: {{profitability.ETC.dollarsPerDay |number:4}}$/100MH/day</br>
-            </div>-->
-            <table class="table" data-sorting="true">
-                <thead>
-                    <tr>
-                        <th data-type="number">Rank</th>
-                        <th>Logo</th>
-                        <th>Coin</th>
-                        <th>Price</th>
-                        <th>Profitability</th>
-                        <th data-breakpoints="xs">Difficulty</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><img src="images/ETH.png" alt="ETH"></td>
-                        <td>Ethereum(ETH)</td>
-                        <td>${{profitability.ETH.priceUSD |number:4}} USD</td>
-                        <td>{{profitability.ETH.dollarsPerDay |number:4}}</td>
-                        <td>{{profitability.ETH.difficulty |number:5}} Trillion</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><img src="images/ETC.png" alt="ETC"></td>
-                        <td>Ethereum Classic(ETC)</td>
-                        <td>${{profitability.ETC.priceUSD |number:4}} USD</td>
-                        <td>{{profitability.ETC.dollarsPerDay |number:4}}</td>
-                        <td>{{profitability.ETC.difficulty |number:5}} Trillion</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div id="header">
+            <div id="bigTitle"><h2>Mining Profitability Comparison</h2></div>
+            <div id="smallTitle"><h4>Mining Profitability Comparison</h4></div>
+            <div  id="infoMessage">
+                <p>Still in very early production. Many more features to come!</p>
+            </div>
+        </div>
+        <div id="desktopAdBanner">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- EthCalcBanner -->
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:728px;height:90px"
+                data-ad-client="ca-pub-7592216756911114"
+                data-ad-slot="2667682183"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div id="mobileAdBanner">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- EthBannerMobile -->
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:320px;height:100px"
+                data-ad-client="ca-pub-7592216756911114"
+                data-ad-slot="5773448986"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+            <div class="row coinsHeader">
+                <div class="col-xs-4">
+                    Coin
+                </div>
+                <div class="col-xs-4">
+                    Profitability For:
+                    <!--<md-menu md-offset="0 -5">
+                    <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
+                        <md-icon md-menu-origin md-svg-icon="call:ring-volume"></md-icon>
+                    </md-button>
+                    <md-menu-content width="4">
+                        <md-menu-item ng-repeat="item in [1, 2, 3]">
+                        <md-button ng-click="ctrl.announceClick($index)"> <span md-menu-align-target>Option</span> Test </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                    </md-menu>-->
+                </div>
+                <div class="col-xs-4">
+                    Price (USD)
+                </div>
+            </div>
+            <div class="row coinList" ng-repeat="coin in coinArray | orderBy: '-profitability.rx470.gross'">
+                <div class="col-xs-4">
+                    <img ng-src="images/{{coin.coinSymbol}}.png"/>
+                    {{coinNames[coin.coinSymbol]}} ({{coin.coinSymbol}})
+                </div>
+                <div class="col-xs-4">
+                    ${{coin.profitability.rx470.gross | number: 4}}
+                </div>
+                <div class="col-xs-4">
+                    ${{coin.priceUSD | number: 4}}
+                </div>
+            </div>
         </div>
     </body>
 

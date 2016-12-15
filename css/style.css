@@ -1,0 +1,47 @@
+.coinList {
+    padding : 10px;
+}
+.coinsHeader {
+    font-weight: bold;
+    font-size: 20pt;
+    padding: 15px;
+}
+body {
+  background-color: white;
+  text-align: center;
+}
+h2,
+h1,
+h3 {
+    text-align: center;
+}
+#infoMessage {
+    text-align: center;
+    color: #430056;
+    margin-bottom: 5px;
+}
+#mobileAdBanner {
+    display: none;
+}
+#smallTitle {
+    display: none;
+}
+#desktopAdBanner {
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+    
+}
+@media screen 
+and (max-width : 500px) {
+    #mobileAdBanner,
+    #smallTitle {
+    margin-top: 10px;
+        display: block;
+        text-align: center;
+    }
+    #desktopAdBanner,
+    #bigTitle {
+        display: none;
+    }
+}
